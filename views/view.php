@@ -1,16 +1,17 @@
 <?php
 /**
- * micro-CMS
+ * MicroCMS
  * =========================================================================================================
  *
- * Vue index (view) - Itération 2 du projet
+ * Vue index (view) - Itération 4 du projet
  * 
  * @author          Christophe Malo
  * @started         29/02/2016
- * @updated         
- * @project         micro-CMS
+ * @version         1.0.0
+ * @copyright       OpenClassrooms - Baptiste Pesquet        
+ * @project         MicroCMS
  * @namefile        view.php
- * @fileversion     1.0.0
+ * @fileversion     1.0.1
  * @phpversion      5.6.10
  * @htmlversion     HTML5
  * @cssversion      CSS3
@@ -18,7 +19,7 @@
  * 
  * @commentaire     
  * 
- * @upgrade         
+ * @upgrade         1.0.1 : updater la view pour utilisation de la class Article    
  * 
  */
 ?>
@@ -37,8 +38,8 @@
         <section>
             <?php foreach ($articles as $article): ?>
             <article>
-                <h2><?php echo $article['art_title']; ?></h2>
-                <p><?php echo $article['art_content'] ?></p>
+                <h2><?php echo $article->getTitle() ?></h2>
+                <p><?php echo $article->getContent() ?></p>
             </article>
             <?php endforeach ?>
         </section>

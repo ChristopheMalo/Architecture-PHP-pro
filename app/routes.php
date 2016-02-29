@@ -1,34 +1,30 @@
 <?php
 /**
- * micro-CMS
+ * MicroCMS
  * =========================================================================================================
  *
- * Gestion des routes de l'application - Itération 3 du projet<br>
+ * COntroleur de gestion des routes de l'application - Itération 3 du projet<br>
  * Routes = Points d'entrées dans l'application
  * 
- * @author          Christophe Malo
- * @started         29/02/2016
- * @updated         
- * @project         micro-CMS
- * @namefile        routes.php
- * @fileversion     1.0.0
- * @phpversion      5.6.10
- * @htmlversion     HTML5
- * @cssversion      CSS3
- * @jqueryversion   
+ * @author      Christophe Malo
+ * @date        29/02/2016
+ * @version     1.0.0
+ * @copyright   OpenClassrooms - Baptiste Pesquet
+ * 
  * 
  * @commentaire     La fonction anonyme associé à la route de la page d'accueil
  *                  utilise la fonction getArticles (définie dans model.php)
  *                  pour récupérer la liste des articles
- * 
- * @upgrade         
- * 
  */
 
 // Page d'accueil -> route correspondant à l'URL racine de l'application ('/')
-$app->get('/', function() {
-    require '../src/model.php';
-    $articles = getArticles();
+$app->get('/', function() use ($app) {
+    
+    // Utilisation du service dao.article enregistré dans app/app.php
+    // Cet appel à $app['dao.article'] renvoie un objet de la class ArticleDAO
+    // ENsuite on peut utiliser une des méthodes de l'objet,
+    // ici findAll pour récupérer la liste des articles
+    $articles = $app['dao.article']->findAll();
     
     // Le couple ob_start et ob_get_clean récupère le résultat de l'appel à require
     // c'est à dire, la vue HTML générée, dans la variable $view
