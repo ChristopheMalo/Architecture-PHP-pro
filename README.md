@@ -4,6 +4,10 @@
 
 Conception et développement d'un micro-CMS selon SCRUM (méthode agile)
 
+Partie 1 - Initialisation de l'application (Itérations 1, 2 et 3)
+
+Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
+
 ## Les itérations
 ### Itération 1
 - Création de la base de données
@@ -18,6 +22,10 @@ Conception et développement d'un micro-CMS selon SCRUM (méthode agile)
 - Utiliser composer pour installer Silex (Vendor n'est pas envoyé sur le repository)
 - Refactoriser l'application existante
 - Réécrire l'application avec Silex
+
+### Itération 4
+- Modélisation objet de l'accès aux données (le domaine)
+- Remplacer PDO par Doctrine DBAL
 
 ## Fichiers à renommer
 ### Itération 1
