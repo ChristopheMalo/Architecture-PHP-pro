@@ -1,21 +1,16 @@
 <?php
 /**
- * micro-CMS
+ * MicroCMS
  * =========================================================================================================
  *
  * Gestion des routes de l'application - Itération 3 du projet<br>
  * Routes = Points d'entrées dans l'application
  * 
- * @author          Christophe Malo
- * @started         29/02/2016
- * @updated         
- * @project         micro-CMS
- * @namefile        routes.php
- * @fileversion     1.0.0
- * @phpversion      5.6.10
- * @htmlversion     HTML5
- * @cssversion      CSS3
- * @jqueryversion   
+ * @author      Christophe Malo
+ * @date        29/02/2016
+ * @version     1.0.0
+ * @copyright   OpenClassrooms - Baptiste Pesquet
+ * 
  * 
  * @commentaire     La fonction anonyme associé à la route de la page d'accueil
  *                  utilise la fonction getArticles (définie dans model.php)

@@ -1,27 +1,14 @@
 <?php
 /**
- * micro-CMS
+ * MicroCMS
  * =========================================================================================================
  *
  * Model : fichier d'accès aux données - Itération 2 du projet
- * Remplacer les données d'accès d'exemple de l'utilisateur par vos propres données
- * Renommer ce fichier model_sample.php en model.php
  * 
- * @author          Christophe Malo
- * @started         29/02/2016
- * @updated         
- * @project         micro-CMS
- * @namefile        model.php
- * @fileversion     1.0.0
- * @phpversion      5.6.10
- * @htmlversion     HTML5
- * @cssversion      CSS3
- * @jqueryversion   
- * 
- * @commentaire     
- * 
- * @upgrade         
- * 
+ * @author      Christophe Malo
+ * @date        29/02/2016
+ * @version     1.0.0
+ * @copyright   OpenClassrooms - Baptiste Pesquet
  */
 
 function getArticles()

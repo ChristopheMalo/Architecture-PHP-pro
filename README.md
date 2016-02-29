@@ -1,4 +1,4 @@
-# micro-CMS
+# MicroCMS
 
 Évoluez vers une architecture PHP professionnelle
 
