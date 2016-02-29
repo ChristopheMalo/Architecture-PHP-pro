@@ -1,14 +1,15 @@
 <?php
 /**
- * micro-CMS
+ * MicroCMS
  * =========================================================================================================
  *
  * Vue index (view) - Itération 2 du projet
  * 
  * @author          Christophe Malo
  * @started         29/02/2016
- * @updated         
- * @project         micro-CMS
+ * @version         1.0.0
+ * @copyright       OpenClassrooms - Baptiste Pesquet        
+ * @project         MicroCMS
  * @namefile        view.php
  * @fileversion     1.0.0
  * @phpversion      5.6.10
