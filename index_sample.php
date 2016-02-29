@@ -29,7 +29,7 @@
     <head>
         <meta charset="utf-8">
         <title>micro-CMS - Page d'accueil</title>
-        <link href="microcms.css" rel="stylesheet" type="text/css">
+        <link href="css/microcms.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <header>
