@@ -13,6 +13,10 @@ Conception et développement d'un micro-CMS selon SCRUM (méthode agile)
 - Séparer les responsabilités
 - Le modèle MVC
 
+### Itération 3
+- Intégrer le framework Silex à l'application
+- Réécrire l'application avec Silex
+
 ## Fichiers à renommer
 ### Itération 1
 - index_sample.php -> index.php
