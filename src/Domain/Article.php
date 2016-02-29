@@ -14,7 +14,8 @@ namespace MicroCMS\Domain;
  * @version     1.0.0
  * @copyright   OpenClassrooms - Baptiste Pesquet
  */
-class Article {
+class Article
+{
     
     /** Les attributs **/
     /**
@@ -102,4 +103,5 @@ class Article {
     {
         $this->content = $content;
     }
+    
 }
