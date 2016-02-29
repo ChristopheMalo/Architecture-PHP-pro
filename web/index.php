@@ -3,7 +3,10 @@
  * micro-CMS
  * =========================================================================================================
  *
- * Page d'accueil - Itération 2 du projet
+ * Contrôleur frontal / Page d'accueil - Itération 3 du projet<br>
+ * Ce fichier centralise la gestion des requêtes HTTP entrantes<br>
+ * L'objet Silex principal $app est instancié dans ce fichier<br>
+ * Inclusion des routes de l'application
  * 
  * @author          Christophe Malo
  * @started         29/02/2016
@@ -22,7 +25,10 @@
  * 
  */
 
-// Affichage de la vue avec les données
-require 'model/model.php';
-$articles = getArticles();
-require 'view/view.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$app = new Silex\Application();
+
+require __DIR__ . '/../app/routes.php';
+
+$app->run();
