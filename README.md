@@ -15,13 +15,15 @@ Conception et développement d'un micro-CMS selon SCRUM (méthode agile)
 
 ### Itération 3
 - Intégrer le framework Silex à l'application
+- Utiliser composer pour installer Silex (Vendor n'est pas envoyé sur le repository)
+- Refactoriser l'application existante
 - Réécrire l'application avec Silex
 
 ## Fichiers à renommer
 ### Itération 1
 - index_sample.php -> index.php
 
-### Itération 2
+### Itération 2 et 3
 - model_sample.php -> model.php
 
 ## Copyright
