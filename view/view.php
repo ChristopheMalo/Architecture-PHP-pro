@@ -3,22 +3,20 @@
  * micro-CMS
  * =========================================================================================================
  *
- * Page d'accueil d'exemple avec accès fictifs - Itération 1 du projet
+ * Vue index (view) - Itération 2 du projet
  * 
  * @author          Christophe Malo
  * @started         29/02/2016
  * @updated         
  * @project         micro-CMS
- * @namefile        index_sample.php
+ * @namefile        view.php
  * @fileversion     1.0.0
  * @phpversion      5.6.10
  * @htmlversion     HTML5
  * @cssversion      CSS3
  * @jqueryversion   
  * 
- * @commentaire     Ce fichier contient des accès fictif à une DB
- *                  Il faut les rempalcer par vos propres accès
- *                  Vous pouvez également supprimer le _sample derrière index 
+ * @commentaire     
  * 
  * @upgrade         
  * 
@@ -37,12 +35,7 @@
         </header>
         
         <section>
-            <?php
-            $bdd = new PDO('mysql:host=localhost;dbname=microcms;charset=utf8', 'votre_user_name_user_db', 'votre_mot_de_passe');
-            $articles = $bdd->query('SELECT * FROM t_article ORDER BY art_id DESC');
-
-            foreach ($articles as $article):
-            ?>
+            <?php foreach ($articles as $article): ?>
             <article>
                 <h2><?php echo $article['art_title']; ?></h2>
                 <p><?php echo $article['art_content'] ?></p>
