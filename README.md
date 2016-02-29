@@ -34,5 +34,8 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 ### Itération 2 et 3
 - model_sample.php -> model.php
 
+### Itération 4
+- app/config/prod_sample.php -> app/config/prod.php
+
 ## Copyright
 **Inspiré par :** [un cours Openclassrooms - de Baptiste Pesquet](https://openclassrooms.com/courses/evoluez-vers-une-architecture-php-professionnelle) - **Adaptation :** Christophe Malo
