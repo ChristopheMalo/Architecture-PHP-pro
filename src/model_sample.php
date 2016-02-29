@@ -5,6 +5,7 @@
  *
  * Model : fichier d'accès aux données - Itération 2 du projet
  * Remplacer les données d'accès d'exemple de l'utilisateur par vos propres données
+ * Renommer ce fichier model_sample.php en model.php
  * 
  * @author          Christophe Malo
  * @started         29/02/2016
