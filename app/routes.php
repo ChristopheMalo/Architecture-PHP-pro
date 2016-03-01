@@ -29,9 +29,14 @@ $app->get('/', function() use ($app) {
     // Le couple ob_start et ob_get_clean récupère le résultat de l'appel à require
     // c'est à dire, la vue HTML générée, dans la variable $view
     // La variable $view est ranvoyé par le contrôleur
-    ob_start();                     // Enclenche la temporisation de sortie HTML
-    require '../views/view.php';
-    $view = ob_get_clean();         // Lit le contenu courant du tampon en l'assignant à $view puis l'efface
+//    ob_start();                     // Enclenche la temporisation de sortie HTML
+//    require '../views/view.php';
+//    $view = ob_get_clean();         // Lit le contenu courant du tampon en l'assignant à $view puis l'efface
+//    
+//    return $view;
     
-    return $view;
+    // Le service Twig ($app['twig'] génère le template index.html.twig
+    // en lui passant des données dynamiques,
+    // ici la variable articles (array d'objets de la classe Article
+    return $app['twig']->render('index.html.twig', array('articles' => $articles));
 });
