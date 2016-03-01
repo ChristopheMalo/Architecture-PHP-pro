@@ -27,6 +27,10 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 - Modélisation objet de l'accès aux données (le domaine)
 - Remplacer PDO par Doctrine DBAL
 
+### Itération 5
+- Améliorer la technologie d'affichage de l'application
+- Intégrer un moteur de templates : Twig
+
 ## Fichiers à renommer
 ### Itération 1
 - index_sample.php -> index.php
