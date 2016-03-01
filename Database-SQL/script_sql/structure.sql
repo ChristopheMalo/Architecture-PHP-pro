@@ -12,10 +12,9 @@
 -- CREATION DE LA STRUCTURE DE LA TABLE article
 -- --------------------------------------------
 DROP TABLE if exists t_article;
+
+CREATE TABLE t_article (
     art_id INTEGER NOT NULL PRIMARY KEY auto-increment,
     art_title VARCHAR(100) NOT NULL,
     art_content VARCHAR(1000) NOT NULL
-CREATE TABLE t_article (
-
-)
-ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+) ENGINE=INNODB CHARACTER SET utf8 COLLATE utf8_unicode_ci;
