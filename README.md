@@ -36,6 +36,11 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 - Intégrer jQuery
 - Coder la vue index avec Bootstrap
 
+### Itération 7
+- Permettre au visiteur de consulter les détails d'un article en cliquant sur son titre
+- MAJ de la DB - intégrer des commentaires
+- MAJ des fichiers de l'application
+
 ## Fichiers à renommer
 ### Itération 1
 - index_sample.php -> index.php
@@ -43,7 +48,7 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 ### Itération 2 et 3
 - model_sample.php -> model.php
 
-### Itération 4, 5, 6
+### Itération 4, 5, 6, 7
 - app/config/prod_sample.php -> app/config/prod.php
 
 ## Copyright
