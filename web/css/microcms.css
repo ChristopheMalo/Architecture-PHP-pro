@@ -33,6 +33,7 @@
 body {
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     font-size: 16px; /* Font base - overwrite boostrap font-size of 14 px */
+    padding-top: 50px;
 }
 
 
