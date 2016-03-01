@@ -31,6 +31,11 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 - Améliorer la technologie d'affichage de l'application
 - Intégrer un moteur de templates : Twig
 
+### Itération 6
+- Intégrer le framework twitter bootstrap
+- Intégrer jQuery
+- Coder la vue index avec Bootstrap
+
 ## Fichiers à renommer
 ### Itération 1
 - index_sample.php -> index.php
@@ -38,7 +43,7 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 ### Itération 2 et 3
 - model_sample.php -> model.php
 
-### Itération 4
+### Itération 4, 5, 6
 - app/config/prod_sample.php -> app/config/prod.php
 
 ## Copyright
