@@ -1,12 +1,16 @@
 /**
  * Script sql de création de la base
  * 
- * TP micro-CMS - Évoluez vers une architecture PHP professionnelle
+ * TP MicroCMS - Évoluez vers une architecture PHP professionnelle
  * 
  * @author      Christophe Malo
  * @date        29/02/2016
- * @version     1.0.0
+ * @update      01/03/2016
+ * @version     1.0.1
  * @copyright   OpenClassrooms - Baptise Pesquet
+ *
+ * @commentaire v1.0.0 : coder la table article
+ *              v1.0.1 : coder la table commentaire
  */
 -- --------------------------------------------
 -- CREATION DE LA STRUCTURE DE LA TABLE article
