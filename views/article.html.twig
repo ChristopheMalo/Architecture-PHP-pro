@@ -1,0 +1,37 @@
+{#
+/**
+ * MicroCMS
+ * =========================================================================================================
+ *
+ * Template Vue article - Itération 7 du projet
+ * 
+ * @author          Christophe Malo
+ * @started         02/03/2016
+ * @version         1.0.O
+ * @copyright       OpenClassrooms - Baptiste Pesquet        
+ * @project         MicroCMS
+ * @namefile        index.html.twig
+ * @phpversion      5.6.10
+ * @htmlversion     HTML5
+ * @cssversion      CSS3
+ * @jqueryversion   
+ * 
+ * @commentaire
+ */
+#}
+{% extends "layout.html.twig" %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.content }}</p>
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        <p><strong>{{ comment.author }}</strong> a dit : {{ comment.content }}</p>
+    {% else %}
+        <p>Pas encore de commentaire</p>
+    {% endfor %}
+</article>
+{% endblock %}
