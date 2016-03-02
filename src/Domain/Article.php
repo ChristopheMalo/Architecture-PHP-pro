@@ -41,7 +41,7 @@ class Article
     
     /**  Les accesseurs - Les getters **/
     /**
-     * Retourne l'identifiant de l'article
+     * Obtient l'identifiant de l'article
      * 
      * @return int $id L'identifiant de l'article
      */
@@ -51,7 +51,7 @@ class Article
     }
     
     /**
-     * Retourne le titre de l'article
+     * Obtient le titre de l'article
      * 
      * @return string $title Le titre de l'article
      */
@@ -61,7 +61,7 @@ class Article
     }
     
     /**
-     * Retourne le contenu de l'article
+     * Obtient le contenu de l'article
      * 
      * @return string $content Le contenu de l'article
      */
@@ -72,7 +72,7 @@ class Article
     
     /** Les mutateurs - Les setters **/
     /**
-     * Assigne un identifiant à l'article
+     * Définit un identifiant à l'article
      * 
      * @param int $id
      * @return void
@@ -83,7 +83,7 @@ class Article
     }
     
     /**
-     * Assigne un titre à l'article
+     * Définit un titre à l'article
      * 
      * @param string $title
      * @return void
@@ -94,7 +94,7 @@ class Article
     }
     
     /**
-     * Assigne un contenu à l'article
+     * Définit un contenu à l'article
      * 
      * @param string $content
      * @return void

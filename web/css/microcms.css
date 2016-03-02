@@ -49,6 +49,10 @@ body {
  * Section Contenu
  * -------------------------
  */
+/* Articles */
+.articleTitle:hover, .articleTitle:focus {
+    text-decoration: none;
+}
 
 
 /**
