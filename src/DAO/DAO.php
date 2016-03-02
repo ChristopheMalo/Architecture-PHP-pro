@@ -38,7 +38,7 @@ abstract class DAO
     }
     
     /**
-     * Donne accès à l'objet de connexion ) la DB
+     * Donne accès à l'objet de connexion à la DB
      * 
      * @return object \Doctrine\DBAL\Connection L'objet de connexion à la DB
      */
