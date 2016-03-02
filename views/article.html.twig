@@ -3,12 +3,11 @@
  * MicroCMS
  * =========================================================================================================
  *
- * Template Vue index - Itération 7 du projet
+ * Template Vue article - Itération 7 du projet
  * 
  * @author          Christophe Malo
- * @started         01/03/2016
- * @updated         02/03/2016
- * @version         1.0.3
+ * @started         02/03/2016
+ * @version         1.0.O
  * @copyright       OpenClassrooms - Baptiste Pesquet        
  * @project         MicroCMS
  * @namefile        index.html.twig
@@ -17,20 +16,22 @@
  * @cssversion      CSS3
  * @jqueryversion   
  * 
- * @commentaire     v1.0.1 -> Utilisation de Twig
- *                  v1.0.2 -> Utilisation de bootstrap et jQuery
- *                  v1.0.3 -> Utilisation de l'héritage de template 
+ * @commentaire
  */
 #}
 {% extends "layout.html.twig" %}
 
-{% block title %}Page d'accueil{% endblock %}
+{% block title %}{{ article.title }}{% endblock %}
 
 {% block content %}
-{% for article in articles %}
 <article>
-    <h1><a class="articleTitle" href="{{ path('article', {'id': article.id}) }}">{{ article.title }}</a></h1>
+    <h1>{{ article.title }}</h1>
     <p>{{ article.content }}</p>
+    <h2>Comments</h2>
+    {% for comment in comments %}
+        <p><strong>{{ comment.author }}</strong> a dit : {{ comment.content }}</p>
+    {% else %}
+        <p>Pas encore de commentaire</p>
+    {% endfor %}
 </article>
-{% endfor %}
 {% endblock %}

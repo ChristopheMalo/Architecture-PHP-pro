@@ -2,40 +2,46 @@
 
 namespace MicroCMS\DAO;
 
-use Doctrine\DBAL\Connection;
 use MicroCMS\Domain\Article;
 
 /**
  * MicroCMS
  * =========================================================================================================
  * 
- * Classe représentant le code d'accès aux données d'un article
+ * Classe représentant le code d'accès aux données d'un article - Model
  * 
  *
  * @author      Christophe Malo
  * @date        29/02/2016
- * @version     1.0.0
+ * @update      02/03/2016
+ * @version     1.0.1
  * @copyright   OpenClassrooms - Baptiste Pesquet
+ * 
+ * @commentaire update v1.0.1 : refactoring du code pour utiliser la class DAO
  */
-class ArticleDAO
+class ArticleDAO extends DAO
 {
-    
     /**
-     * Connexion à la base de données
+     * Méthode permettant d'obtenir / retourner un article
+     * correspondant à l'identifiant fourni en argument
      * 
-     * @var \Doctrine\DBAL\Connection
+     * @param type $id L'identifiant de l'article
+     * @return Object \MicroCMS\Domain\Article Un objet article
+     * @throws \Exception
      */
-    private $db;
-    
-    /**
-     * Méthode de construction pour se connecter à la DB
-     * 
-     * @param Connection $db L'objet de connexion de la base de données
-     * @return void
-     */
-    public function __construct(Connection $db)
+    public function find($id)
     {
-        $this->db = $db;
+        $sql = "SELECT * FROM t_article WHERE art_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        
+        if ($row)
+        {
+            return $this->buildDomainObject($row);
+        }
+        else
+        {
+            throw new \Exception("Pas d'article correspondant à cet id " . $id);
+        }
     }
     
     /**
@@ -46,13 +52,13 @@ class ArticleDAO
     public function findAll()
     {
         $sql = "SELECT * FROM t_article ORDER BY art_id DESC";
-        $result = $this->db->fetchAll($sql);
+        $result = $this->getDb()->fetchAll($sql);
         
         $articles = array();
         foreach ($result as $row)
         {
             $articleId = $row['art_id'];
-            $articles[$articleId] = $this->buildArticle($row);
+            $articles[$articleId] = $this->buildDomainObject($row);
         }
         
         return $articles;
@@ -64,7 +70,7 @@ class ArticleDAO
      * @param array $row Un enregistrement (une ligne) de la DB contenant un article
      * @return Object \MicroCMS\Domain\Article Un objet article
      */
-    private function buildArticle(array $row)
+    protected function buildDomainObject($row)
     {
         $article = new Article();
         $article->setId($row['art_id']);
