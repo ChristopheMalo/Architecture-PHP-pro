@@ -13,6 +13,7 @@ use MicroCMS\Domain\Article;
  *
  * @author      Christophe Malo
  * @date        29/02/2016
+ * @update      02/03/2016
  * @version     1.0.1
  * @copyright   OpenClassrooms - Baptiste Pesquet
  * 
