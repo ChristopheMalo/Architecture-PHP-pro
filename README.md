@@ -37,7 +37,7 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 - Coder la vue index avec Bootstrap
 
 ### Itération 7
-- Permettre au visiteur de consulter les détails d'un article en cliquant sur son titre
+- Ajout d'une fonctionnalité métier : permettre au visiteur de consulter les détails d'un article en cliquant sur son titre
 - MAJ de la DB - intégrer des commentaires
 - MAJ des fichiers de l'application
 
