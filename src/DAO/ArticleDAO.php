@@ -14,29 +14,13 @@ use MicroCMS\Domain\Article;
  *
  * @author      Christophe Malo
  * @date        29/02/2016
- * @version     1.0.0
+ * @version     1.0.1
  * @copyright   OpenClassrooms - Baptiste Pesquet
+ * 
+ * @commentaire update v1.0.1 : refactoring du code pour utiliser la class DAO
  */
 class ArticleDAO
 {
-    
-    /**
-     * Connexion à la base de données
-     * 
-     * @var \Doctrine\DBAL\Connection
-     */
-    private $db;
-    
-    /**
-     * Méthode de construction pour se connecter à la DB
-     * 
-     * @param Connection $db L'objet de connexion de la base de données
-     * @return void
-     */
-    public function __construct(Connection $db)
-    {
-        $this->db = $db;
-    }
     
     /**
      * Méthode permettant de retourner une liste de tous les articles, classés par date (Le plus récent en premier)
@@ -52,7 +36,7 @@ class ArticleDAO
         foreach ($result as $row)
         {
             $articleId = $row['art_id'];
-            $articles[$articleId] = $this->buildArticle($row);
+            $articles[$articleId] = $this->buildDomainObject($row);
         }
         
         return $articles;
@@ -64,7 +48,7 @@ class ArticleDAO
      * @param array $row Un enregistrement (une ligne) de la DB contenant un article
      * @return Object \MicroCMS\Domain\Article Un objet article
      */
-    private function buildArticle(array $row)
+    protected function buildDomainObject($row)
     {
         $article = new Article();
         $article->setId($row['art_id']);
