@@ -19,7 +19,7 @@ use MicroCMS\Domain\Article;
  * 
  * @commentaire update v1.0.1 : refactoring du code pour utiliser la class DAO
  */
-class ArticleDAO
+class ArticleDAO extends DAO
 {
     
     /**
