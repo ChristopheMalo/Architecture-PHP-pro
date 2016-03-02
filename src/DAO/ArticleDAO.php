@@ -52,7 +52,7 @@ class ArticleDAO extends DAO
     public function findAll()
     {
         $sql = "SELECT * FROM t_article ORDER BY art_id DESC";
-        $result = $this->db->fetchAll($sql);
+        $result = $this->getDb()->fetchAll($sql);
         
         $articles = array();
         foreach ($result as $row)
