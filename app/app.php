@@ -72,6 +72,6 @@ $app['dao.article'] = $app->share(function ($app)
  */
 $app['dao.comment'] = $app->share(function ($app) {
     $commentDAO = new MicroCMS\DAO\CommentDAO($app['db']);
-    $commentDAO->setArticleDAO($app['dao.Article']);
+    $commentDAO->setArticleDAO($app['dao.article']);
     return $commentDAO;
 });
