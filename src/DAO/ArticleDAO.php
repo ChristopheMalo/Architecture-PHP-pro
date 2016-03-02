@@ -8,7 +8,7 @@ use MicroCMS\Domain\Article;
  * MicroCMS
  * =========================================================================================================
  * 
- * Classe représentant le code d'accès aux données d'un article
+ * Classe représentant le code d'accès aux données d'un article - Model
  * 
  *
  * @author      Christophe Malo
@@ -20,6 +20,28 @@ use MicroCMS\Domain\Article;
  */
 class ArticleDAO extends DAO
 {
+    /**
+     * Méthode permettant d'obtenir / retourner un article
+     * correspondant à l'identifiant fourni en argument
+     * 
+     * @param type $id L'identifiant de l'article
+     * @return Object \MicroCMS\Domain\Article Un objet article
+     * @throws \Exception
+     */
+    public function find($id)
+    {
+        $sql = "SELECT * FROM t_article WHERE art_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+        
+        if ($row)
+        {
+            return $this->buildDomainObject($row);
+        }
+        else
+        {
+            throw new \Exception("Pas d'article correspondant à cet id " . $id);
+        }
+    }
     
     /**
      * Méthode permettant de retourner une liste de tous les articles, classés par date (Le plus récent en premier)
