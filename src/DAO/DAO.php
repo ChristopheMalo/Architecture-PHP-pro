@@ -14,7 +14,7 @@ use Doctrine\DBAL\Connection;
  * @author      Christophe Malo
  * @date        02/03/2016
  * @version     1.0.0
- * @copyright   OpenClassrooms - Victor Thuillier
+ * @copyright   OpenClassrooms - Baptiste Pesquet
  */
 abstract class DAO
 {
