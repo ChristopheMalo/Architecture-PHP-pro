@@ -1,0 +1,52 @@
+{#
+/**
+ * MicroCMS
+ * =========================================================================================================
+ *
+ * Template Vue Login - Itération 8 du projet
+ * 
+ * @author          Christophe Malo
+ * @started         04/03/2016
+ * @version         1.0.O
+ * @copyright       OpenClassrooms - Baptiste Pesquet        
+ * @project         MicroCMS
+ * @namefile        login.html.twig
+ * @phpversion      5.6.10
+ * @htmlversion     HTML5
+ * @cssversion      CSS3
+ * @jqueryversion   
+ * 
+ * @commentaire
+ */
+#}
+{% extends 'layout.html.twig' %}
+
+{% block title %}Authentication d'un utilisateur{% endblock %}
+
+{% block content %}
+<h2 class="text-center">{{ block('title') }}</h2>
+{% if error %}
+<div class="alert alert-danger">
+    <strong>Erreur de login</strong> {{ error }}
+</div>
+{% endif %}
+<div class="well">
+    <form class="form-signin form-horizontal" role="form" action="{{ path('login_check') }}" method="post">
+        <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+            <input type="text" name="_username" value="{{ last_username }}" class="form-control" placeholder="Entrez votre nom d'utilisateur" required autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                <input type="password" name="_password" class="form-control" placeholder="Entrez votre mot de passe" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+                <button type="submit" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

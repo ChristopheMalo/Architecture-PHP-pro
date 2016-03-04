@@ -27,7 +27,7 @@ class Comment {
     /**
      * L'auteur du commentaire
      * 
-     * @var string
+     * @var \MicroCMS\Domain\User
      */
     private $author;
     
@@ -60,7 +60,7 @@ class Comment {
     /**
      * Obtient l'auteur du commentaire
 
-     * @return string $author
+     * @return \MicroCMS\Domain\User $author
      */
     public function getAuthor()
     {
@@ -80,7 +80,7 @@ class Comment {
     /**
      * Obtient l'article associé au commentaire
      * 
-     * @return object \MicroCMS\Domain\Article
+     * @return \MicroCMS\Domain\Article
      */
     public function getArticle()
     {
@@ -92,7 +92,7 @@ class Comment {
     /**
      * Définit l'identifiant du commentaire
      * 
-     * @param type $id
+     * @param int $id
      * @return void
      */
     public function setId($id)
@@ -103,10 +103,10 @@ class Comment {
     /**
      * Définit l'auteur du commentaire
      * 
-     * @param type $author
+     * @param \MicroCMS\Domain\User $author
      * @return void
      */
-    public function setAuthor($author)
+    public function setAuthor(User $author)
     {
         $this->author = $author;
     }
@@ -114,7 +114,7 @@ class Comment {
     /**
      * Définit le contenu du commentaire
      * 
-     * @param type $content
+     * @param string $content
      * @return void
      */
     public function setContent($content)
