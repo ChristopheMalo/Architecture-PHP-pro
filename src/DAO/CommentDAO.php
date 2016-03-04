@@ -26,6 +26,13 @@ class CommentDAO extends DAO {
     private $articleDAO;
     
     /**
+     * L'auteur du commentaire
+     * 
+     * @var \MicroCMS\DAO\UserDAO;
+     */
+    private $userDao;
+    
+    /**
      * Définit l'article qui va recevoir le commentaire
      * 
      * @param \MicroCMS\DAO\ArticleDAO $articleDAO
@@ -34,6 +41,15 @@ class CommentDAO extends DAO {
     public function setArticleDAO(ArticleDAO $articleDAO)
     {
         $this->articleDAO = $articleDAO;
+    }
+    
+    /**
+     * 
+     * @param \MicroCMS\DAO\UserDAO $userDAO
+     */
+    public function setUserDAO(UserDAO $userDAO)
+    {
+        $this->userDAO = $userDAO;
     }
     
     /**
@@ -50,7 +66,7 @@ class CommentDAO extends DAO {
 
         // art_id n'est pas sélectionné par la requête sql
         // L'article n'est pas récupéré lors de la construction de domaine objet
-        $sql = "SELECT com_id, com_content, com_author FROM t_comment WHERE art_id=? ORDER BY com_id";
+        $sql = "SELECT com_id, com_content, usr_id FROM t_comment WHERE art_id=? ORDER BY com_id";
         $result = $this->getDb()->fetchAll($sql, array($articleId));
 
         // Convertit le résultat de la requête en un tableau d'objet du domaine
@@ -73,16 +89,15 @@ class CommentDAO extends DAO {
      * Basé sur un enregistrement (une ligne) de la table commentaire en DB
      * 
      * @param array $row Liste d'un enregistrement de la DB contenant toutes les données d'un commentaire
-     * @return object \MicroCMS\Domain\Comment
+     * @return \MicroCMS\Domain\Comment $comment Un commentaire
      */
     protected function buildDomainObject($row)
     {
         $comment = new Comment();
         $comment->setId($row['com_id']);
         $comment->setContent($row['com_content']);
-        $comment->setAuthor($row['com_author']);
 
-        // Si art_id présent dans la ligne derésultat SQL
+        // Si art_id présent dans la ligne de résultat SQL
         // Alors construction de l'objet
         // Permet de construire l'objet qu'une seule fois dans la méthode findAllByArticles
         // => Pour limiter les requêtes SQL et améliorer les performances de l'application 
@@ -92,6 +107,14 @@ class CommentDAO extends DAO {
             $articleId = $row['art_id'];
             $article = $this->articleDAO->find($articleId);
             $comment->setArticle($article);
+        }
+        
+        if (array_key_exists('usr_id', $row))
+        {
+            // Trouver et définit L'auteur associé au commentaire
+            $userId = $row['usr_id'];
+            $user = $this->userDao->find($userId);
+            $comment->setAuthor($user);
         }
         
         return $comment;
