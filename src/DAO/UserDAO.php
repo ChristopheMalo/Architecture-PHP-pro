@@ -23,7 +23,7 @@ use MicroCMS\Domain\User;
 class UserDAO extends DAO implements UserProviderInterface {
     
     /**
-     * Retourne un utilisateurcorrespondant à l'id en argument
+     * Retourne un utilisateur correspondant à l'id en argument
      * 
      * @param int $id
      * @return int $id L'identifiant de l'utilisateur
@@ -40,7 +40,7 @@ class UserDAO extends DAO implements UserProviderInterface {
         }
         else
         {
-            throw new Exception("Pas d'utilisateur avec cet id " . $id);
+            throw new \Exception("Pas d'utilisateur avec cet id " . $id);
         }
     }
     
