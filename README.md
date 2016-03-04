@@ -54,7 +54,7 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 ### Itération 2 et 3
 - model_sample.php -> model.php
 
-### Itération 4, 5, 6, 7
+### Itération 4, 5, 6, 7, 8
 - app/config/prod_sample.php -> app/config/prod.php
 
 ## Copyright
