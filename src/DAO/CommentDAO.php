@@ -30,7 +30,7 @@ class CommentDAO extends DAO {
      * 
      * @var \MicroCMS\DAO\UserDAO;
      */
-    private $userDao;
+    private $userDAO;
     
     /**
      * Définit l'article qui va recevoir le commentaire
@@ -113,7 +113,7 @@ class CommentDAO extends DAO {
         {
             // Trouver et définit L'auteur associé au commentaire
             $userId = $row['usr_id'];
-            $user = $this->userDao->find($userId);
+            $user = $this->userDAO->find($userId);
             $comment->setAuthor($user);
         }
         
