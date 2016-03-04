@@ -43,7 +43,6 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 
 ### Itération 8
 - Mettre en place un système d'identification pour les utilisateurs
-- Ajout d'un système de commentaire à un article pour les utilisateurs enregistrés
 - Gestion de la sécurité
 - Gestion des mots de passe
 - Sécurisation de l'application
