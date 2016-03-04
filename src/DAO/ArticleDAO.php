@@ -68,7 +68,7 @@ class ArticleDAO extends DAO
      * Méthode permettant de créer un objet article basé sur un enregistrement de la DB
      * 
      * @param array $row Un enregistrement (une ligne) de la DB contenant un article
-     * @return Object \MicroCMS\Domain\Article Un objet article
+     * @return \MicroCMS\Domain\Article $article Un objet article
      */
     protected function buildDomainObject($row)
     {
