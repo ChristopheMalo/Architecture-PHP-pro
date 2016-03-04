@@ -81,6 +81,12 @@ class UserDAO extends DAO implements UserProviderInterface {
         return 'MicroCMS\Domain\User' === $class;
     }
     
+    /**
+     * Méthode permettant de créer un objet user basé sur un enregistrement de la DB
+     * 
+     * @param array $row Un enregistrement (une ligne) de la DB contenant un utilisateur
+     * @return \MicroCMS\Domain\User $user Un utilisateur
+     */
     protected function buildDomainObject($row) {
         $user = new User();
         $user->setId($row['usr_id']);
