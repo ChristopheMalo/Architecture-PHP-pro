@@ -3,8 +3,10 @@
 use Symfony\Component\HttpFoundation\Request;
 use MicroCMS\Domain\Comment;
 use MicroCMS\Domain\Article;
+use MicroCMS\Domain\User;
 use MicroCMS\Form\Type\CommentType;
 use MicroCMS\Form\Type\ArticleType;
+use MicroCMS\Form\Type\UserType;
 
 /**
  * MicroCMS
@@ -181,7 +183,7 @@ $app->get('/admin/article/{id}/delete', function($id, Request $request) use ($ap
 
 
 /**
- * BAckoffice gestion des commentaires
+ * Backoffice gestion des commentaires
  */
 // Editer un commentaire existant
 $app->match('/admin/comment/{id}/edit', function($id, Request $request) use ($app)
@@ -206,8 +208,75 @@ $app->get('/admin/comment/{id}/delete', function($id, Request $request) use ($ap
 {
     
     $app['dao.comment']->delete($id);
-    $app['session']->getFlashBag()->add('success', 'le commentaire est bien effacé.');
-    // Rediriger vers la page d'acceuil admin
+    $app['session']->getFlashBag()->add('success', 'Le commentaire est bien supprimé.');
+    // Rediriger vers la page d'accueil admin
     return $app->redirect($app['url_generator']->generate('admin'));
     
 })->bind('admin_comment_delete');
+
+
+/**
+ * Backoffice gestion des utilisateurs
+ */
+// Ajouter un utilisateur
+$app->match('/admin/user/add', function(Request $request) use ($app)
+{
+    
+    $user = new User();
+    $userForm = $app['form.factory']->create(new UserType(), $user);
+    $userForm->handleRequest($request);
+    if ($userForm->isSubmitted() && $userForm->isValid())
+    {
+        // Générer une valeur salt aléatoire
+        $salt = substr(md5(time()), 0, 23);
+        $user->setSalt($salt);
+        $plainPassword = $user->getPassword();
+        // Trouver l'encodeur par défaut
+        $encoder = $app['security.encoder.digest'];
+        // Encoder le mot de passe
+        $password = $encoder->encodePassword($plainPassword, $user->getSalt());
+        $user->setPassword($password); 
+        $app['dao.user']->save($user);
+        $app['session']->getFlashBag()->add('success', 'L\'utilisateur est bien créé.');
+    }
+    return $app['twig']->render('user_form.html.twig', array(
+        'title' => 'New user',
+        'userForm' => $userForm->createView()));
+    
+})->bind('admin_user_add');
+
+// Editer un utilisateur existant
+$app->match('/admin/user/{id}/edit', function($id, Request $request) use ($app) {
+    
+    $user = $app['dao.user']->find($id);
+    $userForm = $app['form.factory']->create(new UserType(), $user);
+    $userForm->handleRequest($request);
+    if ($userForm->isSubmitted() && $userForm->isValid()) {
+        $plainPassword = $user->getPassword();
+        // Trouver l'encodeur pour l'utilisateur
+        $encoder = $app['security.encoder_factory']->getEncoder($user);
+        // Encoder le mot de passe
+        $password = $encoder->encodePassword($plainPassword, $user->getSalt());
+        $user->setPassword($password); 
+        $app['dao.user']->save($user);
+        $app['session']->getFlashBag()->add('success', 'L\'utilisateur est bien mis à jour.');
+    }
+    return $app['twig']->render('user_form.html.twig', array(
+        'title' => 'Edit user',
+        'userForm' => $userForm->createView()));
+    
+})->bind('admin_user_edit');
+
+// Effacer un utilisateur
+$app->get('/admin/user/{id}/delete', function($id, Request $request) use ($app)
+{
+
+    // Effacer tous les commentaires associés à l'utilisateur
+    $app['dao.comment']->deleteAllByUser($id);
+    // Effacer tous les utilisateurs
+    $app['dao.user']->delete($id);
+    $app['session']->getFlashBag()->add('success', 'L\'utilisateur est bien supprimé.');
+    // Rediriger vers la page d'accueil admin
+    return $app->redirect($app['url_generator']->generate('admin'));
+
+})->bind('admin_user_delete');
