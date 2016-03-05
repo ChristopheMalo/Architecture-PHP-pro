@@ -48,6 +48,7 @@ $app->get('/', function() use ($app)
     // en lui passant des données dynamiques,
     // ici la variable articles (array d'objets de la classe Article
     return $app['twig']->render('index.html.twig', array('articles' => $articles));
+    
 })->bind('home');
 
 
@@ -93,8 +94,10 @@ $app->match('/article/{id}', function ($id, Request $request) use ($app)
 // Formulaire de login
 $app->get('/login', function(Request $request) use ($app)
 {
+    
     return $app['twig']->render('login.html.twig', array(
         'error'         => $app['security.last_error']($request),
         'last_username' => $app['session']->get('_security.last_username'),
     ));
+    
 })->bind('login');
