@@ -58,10 +58,10 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         ),
     ),              
     // Soumettre l'accès au back office                
-    'security.role.hierarchy' => array(
+    'security.role_hierarchy' => array(
         'ROLE_ADMIN' => array('ROLE_USER'), // Définir une hierarchie
     ),
-    'security.access.rules' => array(
+    'security.access_rules' => array(
         array('^/admin', 'ROLE_ADMIN'), // Protéger la zone /admin
     ),
 ));
