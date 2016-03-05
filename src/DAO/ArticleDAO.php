@@ -65,6 +65,48 @@ class ArticleDAO extends DAO
     }
     
     /**
+     * Enregistre un article dans la DB
+     * 
+     * @param Article $article L'article à enregistrer
+     * @return void
+     */
+    public function save(Article $article)
+    {
+        // Rassemble les valeurs de l'article dans un tableau
+        $articleData = array(
+            'art_title' => $article->getTitle(),
+            'art_content' => $article->getContent(),
+        );
+
+        if ($article->getId())
+        {
+            // L'article existe déjà en DB : mise à jour de l'article
+            $this->getDb()->update('t_article', $articleData, array('art_id' => $article->getId()));
+        }
+        else
+        {
+            // L'article n'existe pas : insérer l'article dans la DB
+            $this->getDb()->insert('t_article', $articleData);
+            
+            // Obtenir l'id du nouvel article créé et le définir dans l'entité
+            $id = $this->getDb()->lastInsertId();
+            $article->setId($id);
+        }
+    }
+    
+    /**
+     * Efface un article
+     * 
+     * @param int $id L'id de l'article
+     */
+    public function delete($id)
+    {
+        // Efface l'article
+        $this->getDb()->delete('t_article', array('art_id' => $id));
+
+    }
+    
+    /**
      * Méthode permettant de créer un objet article basé sur un enregistrement de la DB
      * 
      * @param array $row Un enregistrement (une ligne) de la DB contenant un article

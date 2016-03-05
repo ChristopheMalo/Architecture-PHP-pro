@@ -52,6 +52,14 @@ Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 ### Itération 9
 - Ajout de commentaires à un article
 
+### Itération 10
+- Mettre en place le back-office pour administrer l'application
+  - Affichage des articles, commentaires et utilisateurs de l'application
+  - Modification et suppression d'un article, d'un commentaire ou d'un utilisateur
+  - Ajout d'un nouvel article ou d'un nouvel utilisateur
+- Coder la page d'accueil admin
+- Coder les pages gestion des articles, des commentaires et des utilisateurs sour forme d'onglets
+
 ## Fichiers à renommer
 ### Itération 1
 - index_sample.php -> index.php
@@ -59,7 +67,7 @@ Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 ### Itération 2 et 3
 - model_sample.php -> model.php
 
-### Itération 4, 5, 6, 7, 8
+### Itération 4, 5, 6, 7, 8, 9, 10
 - app/config/prod_sample.php -> app/config/prod.php
 
 ## Copyright

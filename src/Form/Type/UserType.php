@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  * MicroCMS
  * =========================================================================================================
  * 
- * Classe représentant le formulaire d'ajout de commentaire à un article
+ * Classe représentant le formulaire d'ajout d'un utilisateur (depuis le backoffice)
  * 
  *
  * @author      Christophe Malo
@@ -17,7 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  * @version     1.0.0
  * @copyright   OpenClassrooms - Baptiste Pesquet
  */
-class CommentType extends AbstractType
+class UserType extends AbstractType
 {
     
     /**
@@ -29,7 +29,19 @@ class CommentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content', 'textarea');
+        $builder
+            ->add('username', 'text')
+            ->add('password', 'repeated', array(
+                'type'            => 'password',
+                'invalid_message' => 'The password fields must match.',
+                'options'         => array('required' => true),
+                'first_options'   => array('label' => 'Password'),
+                'second_options'  => array('label' => 'Repeat password'),
+            ))
+            ->add('role', 'choice', array(
+                'choices' => array('ROLE_ADMIN' => 'Admin', 'ROLE_USER' => 'User')
+            ));
+
     }
     
     /**
@@ -39,7 +51,7 @@ class CommentType extends AbstractType
      */
     public function getName()
     {
-        return 'comment';
+        return 'user';
     }
     
 }

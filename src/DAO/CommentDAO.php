@@ -44,12 +44,55 @@ class CommentDAO extends DAO {
     }
     
     /**
+     * Définit l'auteur du commentaire
      * 
      * @param \MicroCMS\DAO\UserDAO $userDAO
      */
     public function setUserDAO(UserDAO $userDAO)
     {
         $this->userDAO = $userDAO;
+    }
+    
+    /**
+     * Méthode permettant d'obtenir / retourner un commentaire
+     * correspondant à l'identifiant fourni en argument
+     * 
+     * @param type $id L'identifiant du commentaire
+     * @return \MicroCMS\Domain\Article Un objet commentaire
+     * @throws \Exception
+     */
+    public function find($id)
+    {
+        $sql = "SELECT * FROM t_comment WHERE com_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+
+        if ($row)
+        {
+            return $this->buildDomainObject($row);
+        }
+        else
+        {
+            throw new \Exception("Pas de commentaires correspondant à cet id " . $id);
+        }
+    }
+    
+    /**
+     * Méthode permettant de retourner une liste de tous les commentaires, classés par date (Le plus récent en premier)
+     * 
+     * @return array $entities La liste de tous les commentaires
+     */
+    public function findAll()
+    {
+        $sql = "SELECT * from t_comment ORDER BY com_id DESC";
+        $result = $this->getDb()->fetchAll($sql);
+
+        // Convertit le résultat de la requête en un array d'objets du domaine
+        $entities = array();
+        foreach ($result as $row) {
+            $id = $row['com_id'];
+            $entities[$id] = $this->buildDomainObject($row);
+        }
+        return $entities;
     }
     
     /**
@@ -113,6 +156,38 @@ class CommentDAO extends DAO {
             $id = $this->getDb()->lastInsertId();
             $comment->setId($id);
         }
+    }
+    
+    /**
+     * Efface tous les commentaires d'un article
+     * 
+     * @param int $articleId L'id de l'article concerné par la suppression des commentaires
+     */
+    public function deleteAllByArticle($articleId)
+    {
+        $this->getDb()->delete('t_comment', array('art_id' => $articleId));
+    }
+    
+    /**
+     * Efface tous les commentaires d'un utilisateur
+     * 
+     * @param type $userId L'id de l'utilisateur concerné par la suppression des commentaires
+     */
+    public function deleteAllByUser($userId)
+    {
+        $this->getDb()->delete('t_comment', array('usr_id' => $userId));
+    }
+    
+    /**
+     * Efface un commentaire de la DB
+     * 
+     * @param int $id L'dentifiant du commentaire
+     * @return void
+     */
+    public function delete($id)
+    {
+        // Efface le commentaire de la base
+        $this->getDb()->delete('t_comment', array('com_id' => $id));
     }
     
     /**
