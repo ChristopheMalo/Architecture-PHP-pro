@@ -85,6 +85,37 @@ class CommentDAO extends DAO {
     }
     
     /**
+     * Enregistre un commentaire en DB
+     * 
+     * @param Comment $comment Le commentaire associé à l'article
+     * @return void
+     */
+    public function save(Comment $comment)
+    {
+        // Rassemble les valeurs du commentaire dans un tableau
+        $commentData = array(
+            'art_id'        => $comment->getArticle()->getId(),
+            'usr_id'        => $comment->getAuthor()->getId(),
+            'com_content'   => $comment->getContent()
+        );
+        
+        if ($comment->getId())
+        {
+            // Le commentaire existe déjà en DB : mise à jour du commentaire
+            $this->getDb()->update('t_comment', $commentData, array('com_id' => $comment->getId()));
+        }
+        else
+        {
+            // le commentaire n'existe pas : insérer le commentaire
+            $this->getDb()->insert('t_comment', $commentData);
+            
+            // Obtenir l'id du nouveau commentaire créé et le définior dans l'entité
+            $id = $this->getDb()->lastInsertId();
+            $comment->setId($id);
+        }
+    }
+    
+    /**
      * Méthode permettant de créer / définir un objet Commentaire
      * Basé sur un enregistrement (une ligne) de la table commentaire en DB
      * 

@@ -8,6 +8,8 @@ Partie 1 - Initialisation de l'application (Itérations 1, 2 et 3)
 
 Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 
+Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
+
 ## Les itérations
 ### Itération 1
 - Création de la base de données
@@ -46,6 +48,9 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 - Gestion de la sécurité
 - Gestion des mots de passe
 - Sécurisation de l'application
+
+### Itération 9
+- Ajout de commentaires à un article
 
 ## Fichiers à renommer
 ### Itération 1
