@@ -169,6 +169,16 @@ class CommentDAO extends DAO {
     }
     
     /**
+     * Efface tous les commentaires d'un utilisateur
+     * 
+     * @param type $userId L'id de l'utilisateur concerné par la suppression des commentaires
+     */
+    public function deleteAllByUser($userId)
+    {
+        $this-getDb()->delete('t_comment', array('usr_id' => $userId));
+    }
+    
+    /**
      * Efface un commentaire de la DB
      * 
      * @param int $id L'dentifiant du commentaire
