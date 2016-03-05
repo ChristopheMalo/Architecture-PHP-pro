@@ -44,12 +44,36 @@ class CommentDAO extends DAO {
     }
     
     /**
+     * Définit l'auteur du commentaire
      * 
      * @param \MicroCMS\DAO\UserDAO $userDAO
      */
     public function setUserDAO(UserDAO $userDAO)
     {
         $this->userDAO = $userDAO;
+    }
+    
+    /**
+     * Méthode permettant d'obtenir / retourner un commentaire
+     * correspondant à l'identifiant fourni en argument
+     * 
+     * @param type $id L'identifiant du commentaire
+     * @return \MicroCMS\Domain\Article Un objet commentaire
+     * @throws \Exception
+     */
+    public function find($id)
+    {
+        $sql = "SELECT * FROM t_comment WHERE com_id=?";
+        $row = $this->getDb()->fetchAssoc($sql, array($id));
+
+        if ($row)
+        {
+            return $this->buildDomainObject($row);
+        }
+        else
+        {
+            throw new \Exception("Pas de commentaires correspondant à cet id " . $id);
+        }
     }
     
     /**
@@ -142,6 +166,18 @@ class CommentDAO extends DAO {
     public function deleteAllByArticle($articleId)
     {
         $this->getDb()->delete('t_comment', array('art_id' => $articleId));
+    }
+    
+    /**
+     * Efface un commentaire de la DB
+     * 
+     * @param int $id L'dentifiant du commentaire
+     * @return void
+     */
+    public function delete($id)
+    {
+        // Efface le commentaire de la base
+        $this->getDb()->delete('_comment', array('com_id' => $id));
     }
     
     /**
