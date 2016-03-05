@@ -177,7 +177,7 @@ class CommentDAO extends DAO {
     public function delete($id)
     {
         // Efface le commentaire de la base
-        $this->getDb()->delete('_comment', array('com_id' => $id));
+        $this->getDb()->delete('t_comment', array('com_id' => $id));
     }
     
     /**
