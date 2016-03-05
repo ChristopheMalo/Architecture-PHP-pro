@@ -43,7 +43,6 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 
 // Enregistre les fournisseurs de services liés à la sécurité
-$app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 $app->register(new Silex\Provider\SessionServiceProvider()); // Démarre automatiquement la gestion des sessions PHP
 $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     'security.firewalls' => array(
