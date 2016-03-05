@@ -65,6 +65,39 @@ class UserDAO extends DAO implements UserProviderInterface {
     }
     
     /**
+     * Enregistre un utilisateur dnas la DB
+     * 
+     * @param User $user L'utilisateur
+     * @return void
+     */
+    public function save(User $user)
+    {
+        // Rassemble les valeurs de l'utilisateur dans un tableau
+        $userData = array(
+        'usr_name'      => $user->getUsername(),
+        'usr_salt'      => $user->getSalt(),
+        'usr_password'  => $user->getPassword(),
+        'usr_role'      => $user->getRole()
+        );
+
+        if ($user->getId())
+        {
+            // L'utilisateur existe déjà en DB : mise à jour de l'utilisateur
+            $this->getDb()->update('t_user', $userData, array('usr_id' => $user->getId()));
+        }
+        else
+        {
+            // L'utilisateur n'existe pas : insérer l'utilisateur dans la DB
+            $this->getDb()->insert('t_user', $userData);
+            
+            // Obtenir l'id du nouvel utilisateur créé et le définir dans l'entité
+            $id = $this->getDb()->lastInsertId();
+            $user->setId($id);
+        }
+
+    }
+    
+    /**
      * @inheritDoc
      */
     public function loadUserByUsername($username) {
@@ -99,6 +132,17 @@ class UserDAO extends DAO implements UserProviderInterface {
      */
     public function supportsClass($class) {
         return 'MicroCMS\Domain\User' === $class;
+    }
+    
+    /**
+     * Efface un utilisateur
+     * 
+     * @param int $id L'id de l'utilisateur
+     */
+    public function delete($id)
+    {
+        // Efface l'utilisateur
+        $this->getDb()->delete('t_user', array('usr_id' => $id));
     }
     
     /**
