@@ -40,6 +40,8 @@
     </div>
 </div>
 <div class="tab-content">
+    
+    <!-- GEstion des articles -->
     <div class="tab-pane fade in active adminTable" id="articles">
         {% if articles %}
         <div class="table-responsive">
@@ -86,11 +88,59 @@
         {% endif %}
         <a href="{{ path('admin_article_add') }}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add article</button></a>
     </div>
-    <div class="tab-pane fade adminTable" id="comments">
-        <!-- TODO : insérer ici le code de gestion des commentaires -->
+    
+    <!-- Gestion des commentaires -->
+    <div class="tab-pane fade adminTable" id="comments"> 
+        {% if comments %}
+        <div class="table-responsive">
+            <table class="table table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th>Article</th>
+                        <th>Author</th>
+                        <th>Content</th>
+                        <th></th>  <!-- Actions column -->
+                    </tr>
+                </thead>
+                {% for comment in comments %}
+                <tr>
+                    <td><a class="articleTitle" href="{{ path('article', { 'id': comment.article.id }) }}">{{ comment.article.title }}</a></td>
+                    <td>{{ comment.author.username }}</td>
+                    <td>{{ comment.content | truncate(60) }}</td>
+                    <td>
+                        <a href="{{ path('admin_comment_edit', { 'id': comment.id }) }}" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#commentDialog{{ comment.id }}"><span class="glyphicon glyphicon-remove"></span>
+                        </button>
+                        <div class="modal fade" id="commentDialog{{ comment.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="myModalLabel">Confirmation needed</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        Do you really want to delete this comment ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        <a href="{{ path('admin_comment_delete', { 'id': comment.id }) }}" class="btn btn-danger">Confirm</a>
+                                    </div>
+                                </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                        </div><!-- /.modal -->
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-warning">No comments found.</div>
+        {% endif %}
     </div>
+    
+    <!-- Gestion des utilisateurs -->
     <div class="tab-pane fade adminTable" id="users">
-        <!-- TODO : insérer ici le code de gestion des utilisateurs -->
+        
     </div>
 </div>
 {% endblock %}
