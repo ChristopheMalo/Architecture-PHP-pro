@@ -11,13 +11,14 @@ use Symfony\Component\Debug\ExceptionHandler;
  * 
  * @author      Christophe Malo
  * @date        29/02/2016
- * @update      04/03/2016
- * @version     1.0.3
+ * @update      05/03/2016
+ * @version     1.0.4
  * @copyright   OpenClassrooms - Baptiste Pesquet
  * 
  * @commentaire v1.0.1 du 01/03/2016 : intégrer moteur template Twig au projet
  *              v1.0.2 du 02/03/2016 : enregistrer le service d'accès aux commentaires
  *              v1.0.3 du 04/03/2016 : enregistrer fournisseurs et service de sécurité
+ *              v1.0.4 du 05/03/2016 : enregistrer fournisseurs formulaire
  */
 
 /**
@@ -57,6 +58,10 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
         ),
     ),
 ));
+            
+// Enregistre les fournisseurs de services liés au formulaire
+$app->register(new Silex\Provider\FormServiceProvider());
+$app->register(new Silex\Provider\TranslationServiceProvider());
 
 
 
