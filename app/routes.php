@@ -14,7 +14,7 @@ use MicroCMS\Form\Type\CommentType;
  * @author      Christophe Malo
  * @date        29/02/2016
  * @update      05/03/2016
- * @version     1.0.2
+ * @version     1.0.3
  * @copyright   OpenClassrooms - Baptiste Pesquet
  * 
  * 
@@ -24,6 +24,7 @@ use MicroCMS\Form\Type\CommentType;
  *                  
  *                  v1.0.1 : intégrer refactor view et commentaire
  *                  v1.0.2 : updater la route de l'article pour les commentaires
+ *                  v1.0.3 : coder route back-office
  */
 
 // Page d'accueil -> route correspondant à l'URL racine de l'application ('/')
@@ -102,3 +103,16 @@ $app->get('/login', function(Request $request) use ($app)
     ));
     
 })->bind('login');
+
+
+// Back-office
+// Page d'accueil administration
+$app->get('/admin', function() use ($app) {
+    $articles = $app['dao.article']->findAll();
+    $comments = $app['dao.comment']->findAll();
+    $users = $app['dao.user']->findAll();
+    return $app['twig']->render('admin.html.twig', array(
+        'articles'  => $articles,
+        'comments'  => $comments,
+        'users'     => $users));
+})->bind('admin');
