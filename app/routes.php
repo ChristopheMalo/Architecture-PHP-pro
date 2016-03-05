@@ -13,16 +13,17 @@ use MicroCMS\Form\Type\CommentType;
  * 
  * @author      Christophe Malo
  * @date        29/02/2016
- * @update      02/03/2016
- * @version     1.0.1
+ * @update      05/03/2016
+ * @version     1.0.2
  * @copyright   OpenClassrooms - Baptiste Pesquet
  * 
  * 
- * @commentaire     La fonction anonyme associé à la route de la page d'accueil
+ * @commentaire     La fonction anonyme associée à la route de la page d'accueil
  *                  utilise la fonction getArticles (définie dans model.php)
  *                  pour récupérer la liste des articles
  *                  
  *                  v1.0.1 : intégrer refactor view et commentaire
+ *                  v1.0.2 : updater la route de l'article pour les commentaires
  */
 
 // Page d'accueil -> route correspondant à l'URL racine de l'application ('/')
