@@ -40,6 +40,12 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__ . '/../views',
 ));
 
+// Enregistre l'extension Text de Twig (pour utilisation de truncate
+$app['twig'] = $app->share($app->extend('twig', function(Twig_Environment $twig, $app) {
+    $twig->addExtension(new Twig_Extensions_Extension_Text());
+    return $twig;
+}));
+
 // Enregistre le fournisseur de service Url associé au composant twig-bridge
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 
@@ -69,6 +75,7 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 // Enregistre les fournisseurs de services liés au formulaire
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
+$app->register(new Silex\Provider\ValidatorServiceProvider());
 
 
 
