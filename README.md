@@ -58,7 +58,7 @@ Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
   - Modification et suppression d'un article, d'un commentaire ou d'un utilisateur
   - Ajout d'un nouvel article ou d'un nouvel utilisateur
 - Coder la page d'accueil admin
-- Coder les pages gestion des articles, des commentaires et des utilisateurs sour forme d'onglets
+- Coder les pages de gestion des articles, des commentaires et des utilisateurs sous forme d'onglets
 
 ## Fichiers à renommer
 ### Itération 1
