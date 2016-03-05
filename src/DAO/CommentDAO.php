@@ -135,6 +135,16 @@ class CommentDAO extends DAO {
     }
     
     /**
+     * Efface tous les commentaires d'un article
+     * 
+     * @param int $articleId L'id de l'article concerné par la suppression des commentaires
+     */
+    public function deleteAllByArticle($articleId)
+    {
+        $this->getDb()->delete('t_comment', array('art_id' => $articleId));
+    }
+    
+    /**
      * Méthode permettant de créer / définir un objet Commentaire
      * Basé sur un enregistrement (une ligne) de la table commentaire en DB
      * 
