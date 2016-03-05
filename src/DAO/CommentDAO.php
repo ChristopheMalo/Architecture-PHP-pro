@@ -53,6 +53,25 @@ class CommentDAO extends DAO {
     }
     
     /**
+     * Méthode permettant de retourner une liste de tous les commentaires, classés par date (Le plus récent en premier)
+     * 
+     * @return array $entities La liste de tous les commentaires
+     */
+    public function findAll()
+    {
+        $sql = "SELECT * from t_comment ORDER BY com_id DESC";
+        $result = $this->getDb()->fetchAll($sql);
+
+        // Convertit le résultat de la requête en un array d'objets du domaine
+        $entities = array();
+        foreach ($result as $row) {
+            $id = $row['com_id'];
+            $entities[$id] = $this->buildDomainObject($row);
+        }
+        return $entities;
+    }
+    
+    /**
      * Méthode qui permet d'obtenir / retourner une liste de tous les commentaires pour un article,
      * les commentaires sont triés par date (le plus récent en dernier)
      * 
