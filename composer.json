@@ -4,7 +4,10 @@
         "doctrine/dbal": "2.5.*",
         "twig/twig": "1.24.*",
         "symfony/twig-bridge": "3.*",
-        "symfony/security": "3.*"
+        "symfony/security": "3.*",
+        "symfony/form": "3.*",
+        "symfony/translation": "3.*",
+        "symfony/config": "3.*"
     },
     "autoload": {
         "psr-4": {"MicroCMS\\": "src"}
