@@ -12,6 +12,8 @@ use MicroCMS\Form\Type\ArticleType;
  *
  * Controleur de gestion des routes de l'application - Itération 3 du projet<br>
  * Routes = Points d'entrées dans l'application
+ * Ce fichier est composé de l'ensemble des controleurs
+ * qui gèrent les routes de l'application (frontend et backend)
  * 
  * @author      Christophe Malo
  * @date        29/02/2016
@@ -26,7 +28,7 @@ use MicroCMS\Form\Type\ArticleType;
  *                  
  *                  v1.0.1 : intégrer refactor view et commentaire
  *                  v1.0.2 : updater la route de l'article pour les commentaires
- *                  v1.0.3 : coder route back-office
+ *                  v1.0.3 : coder les controleurs des routes du back-office
  */
 
 // Page d'accueil -> route correspondant à l'URL racine de l'application ('/')
@@ -107,7 +109,9 @@ $app->get('/login', function(Request $request) use ($app)
 })->bind('login');
 
 
-// Back-office
+/**
+ * Back-office
+ */
 // Page d'accueil administration
 $app->get('/admin', function() use ($app)
 {
@@ -119,10 +123,12 @@ $app->get('/admin', function() use ($app)
         'articles'  => $articles,
         'comments'  => $comments,
         'users'     => $users));
-
     
 })->bind('admin');
 
+/**
+ * Back office gestion des articles
+ */
 // Ajouter un nouvel article
 $app->match('/admin/article/add', function(Request $request) use ($app)
 {
@@ -171,5 +177,37 @@ $app->get('/admin/article/{id}/delete', function($id, Request $request) use ($ap
     // Rediriger vers la page d'accueil admin
     return $app->redirect($app['url_generator']->generate('admin'));
 
-    
 })->bind('admin_article_delete');
+
+
+/**
+ * BAckoffice gestion des commentaires
+ */
+// Editer un commentaire existant
+$app->match('/admin/comment/{id}/edit', function($id, Request $request) use ($app)
+{
+
+    $comment = $app['dao.comment']->find($id);
+    $commentForm = $app['form.factory']->create(new CommentType(), $comment);
+    $commentForm->handleRequest($request);
+    if ($commentForm->isSubmitted() && $commentForm->isValid())
+    {
+        $app['dao.comment']->save($comment);
+        $app['session']->getFlashBag()->add('success', 'Le commentaire est bien mis à jour.');
+    }
+    return $app['twig']->render('comment_form.html.twig', array(
+        'title' => 'Edit comment',
+        'commentForm' => $commentForm->createView()));
+
+})->bind('admin_comment_edit');
+
+// Effacer un commentaire
+$app->get('/admin/comment/{id}/delete', function($id, Request $request) use ($app)
+{
+    
+    $app['dao.comment']->delete($id);
+    $app['session']->getFlashBag()->add('success', 'le commentaire est bien effacé.');
+    // Rediriger vers la page d'acceuil admin
+    return $app->redirect($app['url_generator']->generate('admin'));
+    
+})->bind('admin_comment_delete');
