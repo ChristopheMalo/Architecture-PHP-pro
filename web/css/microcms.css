@@ -49,6 +49,11 @@ body {
  * Section Contenu
  * -------------------------
  */
+/* Admin */
+.adminTable {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 /* Articles */
 .articleTitle:hover, .articleTitle:focus {
     text-decoration: none;
