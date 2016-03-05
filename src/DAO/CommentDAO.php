@@ -175,7 +175,7 @@ class CommentDAO extends DAO {
      */
     public function deleteAllByUser($userId)
     {
-        $this-getDb()->delete('t_comment', array('usr_id' => $userId));
+        $this->getDb()->delete('t_comment', array('usr_id' => $userId));
     }
     
     /**
