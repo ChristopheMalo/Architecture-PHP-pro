@@ -45,6 +45,26 @@ class UserDAO extends DAO implements UserProviderInterface {
     }
     
     /**
+     * Méthode permettant de retourner une liste de tous les utilisateurs, classés par rôle et username
+     * 
+     * @return array $entities La liste de tous les utilisateurs
+     */
+    public function findAll()
+    {
+        $sql = "SELECT * FROM t_user ORDER BY usr_role, usr_name";
+        $result = $this->getDb()->fetchAll($sql);
+
+        // Convertit le résultat de la requête en un array d'objets du domaine
+        $entities = array();
+        foreach ($result as $row) {
+            $id = $row['usr_id'];
+            $entities[$id] = $this->buildDomainObject($row);
+        }
+        return $entities;
+
+    }
+    
+    /**
      * @inheritDoc
      */
     public function loadUserByUsername($username) {
