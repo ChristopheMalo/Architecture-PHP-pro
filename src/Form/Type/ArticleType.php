@@ -9,7 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  * MicroCMS
  * =========================================================================================================
  * 
- * Classe représentant le formulaire d'ajout de commentaire à un article
+ * Classe représentant le formulaire d'ajout d'un article (depuis le backoffice)
  * 
  *
  * @author      Christophe Malo
@@ -17,7 +17,7 @@ use Symfony\Component\Form\FormBuilderInterface;
  * @version     1.0.0
  * @copyright   OpenClassrooms - Baptiste Pesquet
  */
-class CommentType extends AbstractType
+class ArticleType extends AbstractType
 {
     
     /**
@@ -29,7 +29,9 @@ class CommentType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('content', 'textarea');
+        $builder
+                ->add('title', 'text')
+                ->add('content', 'textarea');
     }
     
     /**
@@ -39,7 +41,7 @@ class CommentType extends AbstractType
      */
     public function getName()
     {
-        return 'comment';
+        return 'article';
     }
     
 }
