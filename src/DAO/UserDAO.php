@@ -74,10 +74,10 @@ class UserDAO extends DAO implements UserProviderInterface {
     {
         // Rassemble les valeurs de l'utilisateur dans un tableau
         $userData = array(
-        'usr_name'      => $user->getUsername(),
-        'usr_salt'      => $user->getSalt(),
-        'usr_password'  => $user->getPassword(),
-        'usr_role'      => $user->getRole()
+            'usr_name'      => $user->getUsername(),
+            'usr_salt'      => $user->getSalt(),
+            'usr_password'  => $user->getPassword(),
+            'usr_role'      => $user->getRole()
         );
 
         if ($user->getId())
