@@ -67,6 +67,11 @@ Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 - Gestion des erreurs
 - Mise en production
 
+### Itération 12
+- Ajout d'une API JSON
+- Création de l'API de consultation, de modification
+- Mise à jour des tests fonctionnels
+
 ## Fichiers à renommer
 ### Itération 1
 - index_sample.php -> index.php
@@ -74,7 +79,7 @@ Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 ### Itération 2 et 3
 - model_sample.php -> model.php
 
-### Itération 4, 5, 6, 7, 8, 9, 10, 11
+### Itération 4, 5, 6, 7, 8, 9, 10, 11, 12
 - app/config/prod_sample.php -> app/config/prod.php
 
 ## Copyright
