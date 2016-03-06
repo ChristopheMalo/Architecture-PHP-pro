@@ -60,6 +60,13 @@ Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 - Coder la page d'accueil admin
 - Coder les pages de gestion des articles, des commentaires et des utilisateurs sous forme d'onglets
 
+### Itération 11
+- Préparer le site pour la production
+- Ajout de tests fonctionnels
+- Journalisation et débogage
+- Gestion des erreurs
+- Mise en production
+
 ## Fichiers à renommer
 ### Itération 1
 - index_sample.php -> index.php
@@ -67,7 +74,7 @@ Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 ### Itération 2 et 3
 - model_sample.php -> model.php
 
-### Itération 4, 5, 6, 7, 8, 9, 10
+### Itération 4, 5, 6, 7, 8, 9, 10, 11
 - app/config/prod_sample.php -> app/config/prod.php
 
 ## Copyright
