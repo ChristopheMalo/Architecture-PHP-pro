@@ -284,14 +284,6 @@ $app->get('/admin/user/{id}/delete', function($id, Request $request) use ($app)
 
 
 // Contrôleurs associés à l'API de consutation JSON
-// API : enregistre le décodeur de données JSON pour les demandes JSON
-$app->before(function (Request $request) {
-    if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
-        $data = json_decode($request->getContent(), true);
-        $request->request->replace(is_array($data) ? $data : array());
-    }
-});
-
 // API : obtient tous les articles
 $app->get('/api/articles', function() use ($app)
 {
