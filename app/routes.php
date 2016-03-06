@@ -280,3 +280,44 @@ $app->get('/admin/user/{id}/delete', function($id, Request $request) use ($app)
     return $app->redirect($app['url_generator']->generate('admin'));
 
 })->bind('admin_user_delete');
+
+
+
+// Contrôleurs associés à l'API de consutation JSON
+// API : obtenir tous les articles
+$app->get('/api/articles', function() use ($app)
+{
+
+    $articles = $app['dao.article']->findAll();
+    // Convertit un tableau d'objets ($articles) en un tableau de tableaux associatifs ($responseData)
+    $responseData = array();
+    foreach ($articles as $article)
+    {
+        $responseData[] = array(
+            'id' => $article->getId(),
+            'title' => $article->getTitle(),
+            'content' => $article->getContent()
+        );
+    }
+    
+    // Créé et retourne une réponse JSON
+    return $app->json($responseData);
+
+})->bind('api_articles');
+
+// API : obtenir un article
+$app->get('/api/article/{id}', function($id) use ($app)
+{
+
+    $article = $app['dao.article']->find($id);
+    // Convertit un objet ($article) en un tableau associatif ($responseData)
+    $responseData = array(
+        'id' => $article->getId(),
+        'title' => $article->getTitle(),
+        'content' => $article->getContent()
+    );
+    
+    // Créé et retourne une réponse JSON
+    return $app->json($responseData);
+    
+})->bind('api_article');
