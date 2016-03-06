@@ -2,6 +2,7 @@
 
 use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\Debug\ExceptionHandler;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * MicroCMS
@@ -133,4 +134,12 @@ $app->error(function (\Exception $e, $code) use ($app) {
     
     // En fonction du message d'erreur, la vue est générée
     return $app['twig']->render('error.html.twig', array('message' => $message));
+});
+
+// API : enregistre le décodeur de données JSON pour les demandes JSON
+$app->before(function (Request $request) {
+    if (0 === strpos($request->headers->get('Content-Type'), 'application/json')) {
+        $data = json_decode($request->getContent(), true);
+        $request->request->replace(is_array($data) ? $data : array());
+    }
 });
