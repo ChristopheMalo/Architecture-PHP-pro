@@ -284,7 +284,7 @@ $app->get('/admin/user/{id}/delete', function($id, Request $request) use ($app)
 
 
 // Contrôleurs associés à l'API de consutation JSON
-// API : obtenir tous les articles
+// API : obtient tous les articles
 $app->get('/api/articles', function() use ($app)
 {
 
@@ -305,7 +305,7 @@ $app->get('/api/articles', function() use ($app)
 
 })->bind('api_articles');
 
-// API : obtenir un article
+// API : obtient un article
 $app->get('/api/article/{id}', function($id) use ($app)
 {
 
@@ -321,3 +321,48 @@ $app->get('/api/article/{id}', function($id) use ($app)
     return $app->json($responseData);
     
 })->bind('api_article');
+
+// API : créé un nouvel article
+$app->post('/api/article', function(Request $request) use ($app)
+{
+
+    // Vérifie les paramètres de la requête
+    if (!$request->request->has('title'))
+    {
+        return $app->json('Missing required parameter: title', 400);
+    }
+    if (!$request->request->has('content'))
+    {
+        return $app->json('Missing required parameter: content', 400);
+    }
+    
+    // Construit et enregistre un nouvel article
+    $article = new Article();
+    $article->setTitle($request->request->get('title'));
+    $article->setContent($request->request->get('content'));
+    $app['dao.article']->save($article);
+    
+    // Convertit un objet ($article) en un tableau associatif ($responseData)
+    $responseData = array(
+        'id' => $article->getId(),
+        'title' => $article->getTitle(),
+        'content' => $article->getContent()
+        );
+    
+    return $app->json($responseData, 201);  // 201 = Créé
+    
+})->bind('api_article_add');
+
+// API : efface un article article existant
+$app->delete('/api/article/{id}', function ($id, Request $request) use ($app)
+{
+
+    // Efface tous les commentaires associés
+    $app['dao.comment']->deleteAllByArticle($id);
+    
+    // Efface l'article
+    $app['dao.article']->delete($id);
+    
+    return $app->json('No Content', 204);  // 204 = Pas de contenu
+
+})->bind('api_article_delete');
