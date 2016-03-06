@@ -1,5 +1,4 @@
 <?php
-
 /**
  * MicroCMS
  * =========================================================================================================
@@ -16,12 +15,6 @@
  * 
  * @commentaire v1.0.1 du 06/02/2016 : intégrer config pour tests unitaires - identique à prod sous MAMP
  */
-
-// Inclure la configuration de production
-//require __DIR__ . '/prod.php';
-
-// Inutile sous MAMP -> 'host'     => '127.0.0.1',
-// La configuration prod avec 'localhost' est suffisante sous mamp
 // Doctrine (db)
 $app['db.options'] = array(
     'driver'    => 'pdo_mysql',
