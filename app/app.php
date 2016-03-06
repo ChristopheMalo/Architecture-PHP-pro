@@ -77,6 +77,20 @@ $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
 $app->register(new Silex\Provider\ValidatorServiceProvider());
 
+// Enregistre fournisseurs de services pour les logs
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => __DIR__.'/../var/logs/microcms.log',
+    'monolog.name' => 'MicroCMS',
+    'monolog.level' => $app['monolog.level']
+));
+$app->register(new Silex\Provider\ServiceControllerServiceProvider());
+if (isset($app['debug']) && $app['debug']) {
+    $app->register(new Silex\Provider\HttpFragmentServiceProvider());
+    $app->register(new Silex\Provider\WebProfilerServiceProvider(), array(
+        'profiler.cache_dir' => __DIR__.'/../var/cache/profiler'
+    ));
+}
+
 
 
 
