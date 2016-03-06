@@ -18,7 +18,8 @@ use Silex\WebTestCase;
  * @version     1.0.0
  * @copyright   OpenClassrooms - Baptiste Pesquet
  * 
- * @commentaire 
+ * @commentaire Utiliser la config Prod pour les tests unitaires
+ *              La config Dev (monolog info + debug) génère des erreurs avec phpunit
  */
 
 class AppTest extends WebTestCase
@@ -44,10 +45,10 @@ class AppTest extends WebTestCase
      */
     public function createApplication()
     {
-        // Instantie, confgure et renvoir l'application
+        // Instantie, configure et renvoit l'application
         $app = new \Silex\Application();
-
-        require __DIR__.'/../../app/config/dev.php';
+        
+        require __DIR__.'/../../app/config/prod.php'; // Pour php unit
         require __DIR__.'/../../app/app.php';
         require __DIR__.'/../../app/routes.php';
         
@@ -62,7 +63,7 @@ class AppTest extends WebTestCase
     }
 
     /**
-     * Fournit toutes les URL d'application valides.
+     * Fournit toutes les URL d'applications valides.
      *
      * @return array La liste de toutes les URL valides de l'application
      */
@@ -78,7 +79,9 @@ class AppTest extends WebTestCase
             array('/admin/comment/1/edit'),
             array('/admin/user/add'),
             array('/admin/user/1/edit'),
-            ); 
+            array('/api/articles'),
+            array('/api/article/1'),
+        ); 
     }
     
 }
