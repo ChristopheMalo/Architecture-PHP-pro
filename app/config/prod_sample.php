@@ -22,3 +22,6 @@ $app['db.options'] = array(
     'user'      => 'votre_user_name_user_db',
     'password'  => 'votre_mot_de_passe',
 );
+
+// Définit le niveau des logs
+$app['monolog.level'] = 'WARNING';
