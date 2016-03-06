@@ -14,24 +14,24 @@
  * @version     1.0.1
  * @copyright   OpenClassrooms - Baptiste Pesquet
  * 
- * @commentaire v1.0.1 du 06/02/2016 : intégrer config pour tests unitaires
+ * @commentaire v1.0.1 du 06/02/2016 : intégrer config pour tests unitaires - identique à prod sous MAMP
  */
 
 // Inclure la configuration de production
-require __DIR__ . '/prod.php';
+//require __DIR__ . '/prod.php';
 
-// Inutile sous MAMP
+// Inutile sous MAMP -> 'host'     => '127.0.0.1',
 // La configuration prod avec 'localhost' est suffisante sous mamp
 // Doctrine (db)
-//$app['db.options'] = array(
-//    'driver'   => 'pdo_mysql',
-//    'charset'  => 'utf8',
-//    'host'     => '127.0.0.1',  // Mandatory for PHPUnit testing
-//    'port'     => '3306',
-//    'dbname'   => 'microcms',
-//    'user'     => 'microcms_user',
-//    'password' => 'secret',
-//);
+$app['db.options'] = array(
+    'driver'    => 'pdo_mysql',
+    'charset'   => 'utf8',
+    'host'      => 'localhost',
+    'port'      => '3306',
+    'dbname'    => 'microcms',
+    'user'      => 'microcms_user',
+    'password'  => 'mdb_secret_cms',
+);
 
 // Active le mode de débogage
 $app['debug'] = true;
