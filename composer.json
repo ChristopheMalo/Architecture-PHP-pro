@@ -9,7 +9,9 @@
         "symfony/translation": "2.7.*",
         "symfony/config": "2.7.*",
         "twig/extensions": "1.3.*",
-        "symfony/validator": "2.7.*"
+        "symfony/validator": "2.7.*",
+        "symfony/monolog-bridge": "2.7.*",
+        "silex/web-profiler": "1.0.*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.*",
