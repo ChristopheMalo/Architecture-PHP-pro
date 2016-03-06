@@ -11,8 +11,8 @@ use Symfony\Component\Debug\ExceptionHandler;
  * 
  * @author      Christophe Malo
  * @date        29/02/2016
- * @update      05/03/2016
- * @version     1.0.5
+ * @update      06/03/2016
+ * @version     1.0.6
  * @copyright   OpenClassrooms - Baptiste Pesquet
  * 
  * @commentaire v1.0.1 du 01/03/2016 : intégrer moteur template Twig au projet
@@ -20,6 +20,7 @@ use Symfony\Component\Debug\ExceptionHandler;
  *              v1.0.3 du 04/03/2016 : enregistrer fournisseurs et service de sécurité
  *              v1.0.4 du 05/03/2016 : enregistrer fournisseurs formulaire
  *              v1.0.5 du 05/03/2016 : back office
+ *              v1.0.6 du 06/02/2016 : gestionnaire d'erreur
  */
 
 /**
@@ -114,4 +115,22 @@ $app['dao.comment'] = $app->share(function ($app) {
     $commentDAO->setArticleDAO($app['dao.article']);
     $commentDAO->setUserDAO($app['dao.user']);
     return $commentDAO;
+});
+
+// Enregistre le service de gestion personnalisé d'erreurs
+$app->error(function (\Exception $e, $code) use ($app) {
+    // Construction d'un message d'erreur
+    switch ($code) {
+        case 403:
+            $message = 'Access denied.';
+            break;
+        case 404:
+            $message = 'The requested resource could not be found.';
+            break;
+        default:
+            $message = "Something went wrong.";
+    }
+    
+    // En fonction du message d'erreur, la vue est générée
+    return $app['twig']->render('error.html.twig', array('message' => $message));
 });
