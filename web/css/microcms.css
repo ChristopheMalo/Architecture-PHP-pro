@@ -59,6 +59,12 @@ body {
     text-decoration: none;
 }
 
+/* Image erreur */
+#errorPanel {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
 
 /**
  * -------------------------
