@@ -35,3 +35,6 @@ $app['db.options'] = array(
 
 // Active le mode de débogage
 $app['debug'] = true;
+
+// Définit le niveau des logs
+$app['monolog.level'] = 'INFO';
