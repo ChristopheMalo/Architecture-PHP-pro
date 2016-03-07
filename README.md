@@ -10,7 +10,7 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 
 Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 
-**Attention :** les fichiers database.sql, config/dev.php et config/prod.php utilisent un user et pass génériques à adapter selon votre configuration. N'utilisez pas ces données sur un serveur de production. Pensez à les modifier.
+**Attention :** les fichiers database.sql, config/dev.php et config/prod.php utilisent un user et pass qui sont génériques. Il faut les adapter selon votre configuration. N'utilisez pas ces données sur un serveur de production. Pensez à les modifier.
 
 ## Les itérations
 ### Itération 1
