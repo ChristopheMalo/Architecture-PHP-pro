@@ -18,4 +18,4 @@ USE microcms;
 -- --------------------------------------
 -- CREATION DU USER
 -- --------------------------------------
-GRANT all privileges ON microcms.* TO 'votre_user_name_user_db'@'localhost' identified BY 'votre_mot_de_passe';
+GRANT all privileges ON microcms.* TO 'microcms_user'@'localhost' identified BY 'mdb_secret_cms';

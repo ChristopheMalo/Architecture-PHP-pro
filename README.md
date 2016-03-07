@@ -10,6 +10,8 @@ Partie 2 - Refactorisation de l'architecture (Itérations 4, 5, 6 et 7)
 
 Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 
+**Attention :** les fichiers database.sql, config/dev.php et config/prod.php utilisent un user et pass qui sont génériques. Il faut les adapter selon votre configuration. N'utilisez pas ces données sur un serveur de production. Pensez à les modifier.
+
 ## Les itérations
 ### Itération 1
 - Création de la base de données
@@ -71,6 +73,10 @@ Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 - Ajout d'une API JSON
 - Création de l'API de consultation, de modification
 - Mise à jour des tests fonctionnels
+
+### Itération 13
+- Réorganiser les contrôleurs (accueil, administration et API)
+- Réécritures des routes
 
 ## Fichiers à renommer
 ### Itération 1
