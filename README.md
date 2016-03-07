@@ -78,6 +78,9 @@ Partie 3 - Sécurité et administration (Itérations 8, 9 et 10)
 - Réorganiser les contrôleurs (accueil, administration et API)
 - Réécritures des routes
 
+### Itération 14
+- Prendre en compte les demandes d'améliorations de la checklist de sensiolabs insight
+
 ## Fichiers à renommer
 ### Itération 1
 - index_sample.php -> index.php

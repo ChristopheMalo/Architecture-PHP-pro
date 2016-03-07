@@ -1,4 +1,7 @@
 {
+    "name": "MicroCMS",
+    "description": "A minimalist CMS",
+    "licence": "MIT",
     "require": {
         "silex/silex": "1.3.*",
         "doctrine/dbal": "2.5.*",
