@@ -1,5 +1,5 @@
 {
-    "name": "micro-cms",
+    "name": "microcms/microcms",
     "description": "A minimalist CMS",
     "license": "MIT",
     "require": {
