@@ -5,7 +5,6 @@
  * =========================================================================================================
  *
  * Fichier de configuration du paramétrage de la connexion à la DB via Doctrine DBAL
- * Renommer le fichier prod_sample.php en prod.php
  * 
  * @author      Christophe Malo
  * @date        29/02/2016
@@ -19,8 +18,8 @@ $app['db.options'] = array(
     'host'      => 'localhost',
     'port'      => '3306',
     'dbname'    => 'microcms',
-    'user'      => 'votre_user_name_user_db',
-    'password'  => 'votre_mot_de_passe',
+    'user'      => 'microcms_user',
+    'password'  => 'mdb_secret_cms',
 );
 
 // Définit le niveau des logs
